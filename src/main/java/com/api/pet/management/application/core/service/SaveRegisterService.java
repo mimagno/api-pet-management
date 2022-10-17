@@ -20,7 +20,7 @@ public class SaveRegisterService implements SaveRegisterServicePort {
     public RegisterResponse saveRegister(RegisterResponse registerResponse, String homeZip, String establishmentZip) {
         var homeAdress = searchAdressPort.search(homeZip);
         var establishmentAdress = searchAdressPort.search(establishmentZip);
-        registerResponse.setHomeAdress((HomeAdress) homeAdress);
+        registerResponse.getClient().setHomeAdress((HomeAdress) homeAdress);
         registerResponse.setEstablishmentAdress((EstablishmentAdress) establishmentAdress);
 
         return saveRegisterPort.save(registerResponse);
